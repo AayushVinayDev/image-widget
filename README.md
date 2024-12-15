@@ -67,7 +67,7 @@ This is a simple drawing application built with React, TypeScript, and Fabric.js
 
 ## Live Link
 
-Check out the live version of the project here: [Canvas Drawing App](#).
+Check out the live version of the project here: [Canvas Drawing App](https://image-widget.netlify.app/).
 
 ---
 
