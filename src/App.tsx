@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { DrawingBoard } from './components/DrawingBoard';
 import { SelectionPreview } from './components/SelectionPreview';
 import { Images } from 'lucide-react';

@@ -13,7 +13,7 @@ import {
 export const DrawingBoard: React.FC<DrawingCanvasConfig> = ({ onSelectionComplete }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [drawingCanvas, setDrawingCanvas] = useState<fabric.Canvas | null>(null);
-  const [toolSize, setToolSize] = useState(DRAWING_CONFIG.defaultToolSize);
+  const [toolSize, setToolSize] = useState<number>(DRAWING_CONFIG.defaultToolSize);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [historyManager, setHistoryManager] = useState<{ undoAction: () => void; redoAction: () => void } | null>(null);
 
@@ -88,8 +88,8 @@ export const DrawingBoard: React.FC<DrawingCanvasConfig> = ({ onSelectionComplet
 
   const exportMask = () => {
     if (drawingCanvas) {
-      const maskImage = drawingCanvas.toDataURL();
-      const originalImage = drawingCanvas.getObjects('image')[0]?.toDataURL();
+      const maskImage = drawingCanvas.toDataURL({ format: 'png' });
+      const originalImage = drawingCanvas.getObjects('image')[0]?.toDataURL({ format: 'png' });
       if (originalImage) {
         onSelectionComplete(originalImage, maskImage);
       }
@@ -131,7 +131,7 @@ export const DrawingBoard: React.FC<DrawingCanvasConfig> = ({ onSelectionComplet
         
         <PaintTools 
           toolSize={toolSize}
-          onToolSizeUpdate={setToolSize}
+          onToolSizeUpdate={(diameter) => setToolSize(diameter)}
         />
 
         <button
